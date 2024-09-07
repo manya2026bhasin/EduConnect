@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+/* Home Page Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Welcome Section */
+.home {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start; /* Snap to this section */
+}
+
+.home-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('C:\Users\MANYA\OneDrive\Desktop\web development\mentorGroupCollaboration\client\src\images\back4.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    filter: brightness(70%);
+    z-index: -1;
+}
+
+.home-container {
+    text-align: center;
+    color: #333; /* Dark grey for text */
+    z-index: 1;
+}
+
+.home h1 {
+    font-size: 5vw;
+    margin-bottom: 20px;
+    font-weight: lighter;
+    color: white; /* Almost black for headings */
+}
+
+.home h1 span {
+    font-family: "Allura", cursive;
+    font-size: 8vw;
+    color: #4A90E2; /* Blue highlight */
+}
+
+.home button {
+    background-color: #4A90E2; /* Primary blue */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 1.5vw;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.home button:hover {
+    background-color: #003f75; /* Darker blue on hover */
+}
+
+/* Benefits Section */
+.benefits {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+    scroll-snap-align: start;
+}
+
+.benefits h2 {
+    font-size: 4vw;
+    margin-bottom: 40px;
+    color: #111; /* Almost black for headings */
+}
+
+.benefit-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.benefit-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 10px;
+}
+
+.benefit-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-7px);
+    transition: all 0.3s ease;
+}
+
+.benefit-card h3 {
+    font-size: 2vw;
+    color: #4A90E2; /* Primary blue for card headings */
+    margin-bottom: 15px;
+}
+
+.benefit-card p {
+    font-size: 1.2vw;
+    color: #666; /* Soft grey text */
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a; /* Dark grey footer */
+    color: #f9f9f9;
+    padding: 40px 0;
+    font-size: 1rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-column {
+    width: 30%;
+}
+
+.footer-column h3 {
+    color: #4A90E2; /* Blue headings in footer */
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.footer-column p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #f9f9f9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #4A90E2; /* Blue on hover */
+}
+
+.social-icons a {
+    color: #f9f9f9;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #4A90E2; /* Blue hover for icons */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #555;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    color: #ccc;
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
