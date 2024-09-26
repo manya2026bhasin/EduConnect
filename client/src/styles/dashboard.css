@@ -90,11 +90,6 @@
   align-self: flex-end;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-
 label {
   margin-bottom: 10px;
 }

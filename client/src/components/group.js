@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+import Chats from './chats';
 import '../styles/group.css'; // Add a CSS file for styling
 
 const Group = () => {
@@ -39,7 +40,7 @@ const Group = () => {
   const renderFeatureContent = () => {
     switch (activeFeature) {
       case 'chat':
-        return <div className="chat-box">Chat Feature Coming Soon</div>;
+        return <Chats getEmailFromToken={getEmailFromToken} group_id={id}/>;
       case 'files':
         return <div className="files-box">File Sharing Coming Soon</div>;
       case 'todo':

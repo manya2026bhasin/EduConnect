@@ -184,6 +184,40 @@ app.get('/api/checkUser', async (req, res) => {
     }
 });
 
+app.post('/api/chats', async (req, res) => {
+    data = req.body;
+    console.log('Data received:', data);
+    try {
+
+        const client = await pool.connect();
+        const query = 'INSERT INTO chats (message,email,createdat,group_id) VALUES ($1,$2,$3,$4)';
+        const values = [req.body["message"],req.body["email"],req.body["createdat"],req.body["group_id"]];
+
+        const result = await client.query(query, values);
+        client.release();
+        res.status(200).send('data added');
+    } catch (error) {
+        console.error('Error processing form submission:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
+app.get('/api/groupchats', async (req, res) => {
+    try {
+        const { group_id } = req.query; // Extract category from query parameters
+        console.log('group id is :', group_id);
+        const client = await pool.connect();
+        const query = 'SELECT * FROM chats WHERE group_id = $1';
+        const values = [group_id];
+        const result = await client.query(query, values);
+        client.release();
+        res.status(200).json(result.rows); // Send the filtered blogs back to the client
+
+    } catch (error) {
+        console.error('Error retrieving chats of this group:', error);
+        res.status(500).send('Internal server error');
+    }
+});
 
 app.get('/', (req, res) => {
     res.send('Server is working!');
