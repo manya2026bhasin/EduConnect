@@ -1,43 +1,208 @@
+/* Main layout for the group page */
 .group-page {
-    display: flex;
-    height: 100vh;
-  }
-  
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-open {
+  transform: translateX(0); /* Sidebar visible */
+}
+
+.sidebar-option {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.sidebar-option:hover {
+  background-color: #ddd;
+  transform: scale(1.05); /* Scale on hover */
+}
+
+/* Responsive Sidebar */
+.hamburger-button {
+  display: none;
+  font-size: 24px;
+  margin: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.slider-button {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  border: none;
+  background-color: #f4f4f4;
+  border-radius: 50%;
+  font-size: 43px;
+  color: #b1a9a9;
+  display: none;
+  left: 88%;
+  top: 50%;
+  border: 1px solid #d1cccc;
+}
+
+.slider-button:hover {
+  background-color: #ddd;
+}
+
+.slider-button-invisible {
+  display: none;
+}
+
+@media (max-width: 800px) {
   .sidebar {
-    width: 200px;
-    background-color: #f4f4f4;
-    padding: 10px;
-    border-right: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    z-index: 1000;
+    transform: translateX(-250px); /* Sidebar hidden by default */
   }
-  
-  .sidebar-option {
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+
+  .sidebar-open {
+    transform: translateX(0); /* Sidebar visible when open */
   }
-  
-  .sidebar-option:hover {
-    background-color: #ddd;
+
+  .hamburger-button {
+    display: block; /* Show hamburger button on small screens */
   }
-  
+
+  .slider-button {
+    display: block; /* Show slider button on small screens */
+  }
+
   .group-content {
-    flex: 1;
-    padding: 20px;
+    padding: 15px; /* Adjust content padding for smaller screens */
+    margin-top: 50px; /* Add space for the hamburger button */
   }
-  
-  h2 {
-    margin-bottom: 10px;
-  }
-  
-  .chat-box,
-  .files-box,
-  .todo-box {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
+}
+
+/* Group content styles */
+.group-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Styles for different feature boxes */
+.chat-box,
+.files-box,
+.todo-box,
+.tasks-box {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Group Tasks Section Styling */
+.group-tasks-container {
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.task-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item span {
+  flex: 1;
+}
+
+/* Add Task Button */
+.add-task-button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: background-color 0.3s;
+}
+
+.add-task-button:hover {
+  background-color: #4cae4c;
+}
+
+/* Task Input and Reply Section */
+.task-input-container {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.task-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.submit-task-btn {
+  background-color: #0275d8;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: background-color 0.3s;
+}
+
+.submit-task-btn:hover {
+  background-color: #025aa5;
+}
+
+/* Task Reply Section */
+.task-reply-section {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+}
+
+.reply-item {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Delete button for tasks */
+.delete-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 10px;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #c9302c;
+}

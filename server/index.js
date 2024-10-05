@@ -202,6 +202,38 @@ app.post('/api/chats', async (req, res) => {
     }
 });
 
+app.post('/api/tasks', async (req, res) => {
+    data = req.body;
+    console.log('Data received:', data);
+    try {
+
+        const client = await pool.connect();
+        const query = 'INSERT INTO tasks (task,author) VALUES ($1,$2)';
+        const values = [req.body["task"],req.body["email"]];
+
+        const result = await client.query(query, values);
+        client.release();
+        res.status(200).send('data added');
+    } catch (error) {
+        console.error('Error processing form submission:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
+app.delete('/api/tasks/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await pool.query('DELETE FROM tasks WHERE id = $1 RETURNING *', [id]);
+        if (result.rowCount === 0) {
+            return res.status(404).json({ message: 'Task not found' });
+        }
+        res.status(200).json({ message: 'Task deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting task:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
 app.get('/api/groupchats', async (req, res) => {
     try {
         const { group_id } = req.query; // Extract category from query parameters
@@ -217,6 +249,54 @@ app.get('/api/groupchats', async (req, res) => {
         console.error('Error retrieving chats of this group:', error);
         res.status(500).send('Internal server error');
     }
+});
+
+app.get('/api/authortasks', async (req, res) => {
+    try {
+        const { author } = req.query; // Extract category from query parameters
+        console.log('author is :', author);
+        const client = await pool.connect();
+        const query = 'SELECT * FROM tasks WHERE author = $1';
+        const values = [author];
+        const result = await client.query(query, values);
+        client.release();
+        res.status(200).json(result.rows); // Send the filtered blogs back to the client
+
+    } catch (error) {
+        console.error('Error retrieving chats of this group:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
+app.get('/api/groupdetails', async (req, res) => {
+    const groupId = req.query.group_id;
+
+  try {
+    // Query to get the group name and description from `group_details`
+    const groupQuery = `SELECT gname, description FROM groups_info WHERE id = $1`;
+    
+    // Query to get the members for the given group ID from `user_groups`
+    const membersQuery = `SELECT username FROM user_groups WHERE group_id = $1`;
+
+    // Execute the queries
+    const groupDetails = await pool.query(groupQuery, [groupId]);
+    const members = await pool.query(membersQuery, [groupId]);
+
+    if (groupDetails.rows.length === 0) {
+      return res.status(404).json({ error: 'Group not found' });
+    }
+
+    // Prepare the response object with group details and members
+    const groupData = {
+      name: groupDetails.rows[0].gname,
+      description: groupDetails.rows[0].description,
+      members: members.rows.map((member) => member.username),
+    };
+    res.json(groupData);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: 'Server error' });
+  }
 });
 
 app.get('/', (req, res) => {
