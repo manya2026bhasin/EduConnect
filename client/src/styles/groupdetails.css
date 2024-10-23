@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background: linear-gradient(135deg, #f0f0f0 25%, #ffffff 100%);
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
 }
@@ -17,19 +16,12 @@
 .group-name {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #4b0082;
     text-align: center;
-    border-bottom: 2px solid #4b0082;
     display: inline-block;
     padding: 10px 20px;
     border-radius: 8px;
-    background: rgba(75, 0, 130, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
-}
-
-.group-name:hover {
-    color: #ffffff;
-    background: #4b0082;
 }
 
 .group-desc {
@@ -67,7 +59,7 @@
 
 .member {
     font-size: 1rem;
-    color: #4b0082;
+    color: #ff6363;
     background: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 5px;

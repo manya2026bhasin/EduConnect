@@ -1,7 +1,7 @@
 .to-do-list {
     width: 55%;
     margin: 20px auto;
-    background-color: #e7f4f8;
+    background-color: #fff3e6;
     border-radius: 8px;
     padding: 20px;
 }
@@ -30,7 +30,7 @@
 .to-do-item button {
     padding: 10px 15px;
     border: none;
-    background-color: #4a4e69;
+    background-color: #ff5c5c;
     color: white;
     border-radius: 5px;
     cursor: pointer;

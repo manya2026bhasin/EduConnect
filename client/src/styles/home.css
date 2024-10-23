@@ -53,11 +53,11 @@ body, html {
 .home h1 span {
     font-family: "Allura", cursive;
     font-size: 8vw;
-    color: #4A90E2; /* Blue highlight */
+    color: #ff5c5c; /* Blue highlight */
 }
 
 .home button {
-    background-color: #4A90E2; /* Primary blue */
+    background-color: #ff5c5c; /* Primary blue */
     color: white;
     border: none;
     padding: 12px 24px;
@@ -115,7 +115,7 @@ body, html {
 
 .benefit-card h3 {
     font-size: 2vw;
-    color: #4A90E2; /* Primary blue for card headings */
+    color: #ff5c5c; /* Primary blue for card headings */
     margin-bottom: 15px;
 }
 
@@ -146,7 +146,7 @@ footer {
 }
 
 .footer-column h3 {
-    color: #4A90E2; /* Blue headings in footer */
+    color: #ff5c5c; /* Blue headings in footer */
     margin-bottom: 20px;
     font-size: 1.5rem;
 }
@@ -172,7 +172,7 @@ footer {
 }
 
 .footer-column ul li a:hover {
-    color: #4A90E2; /* Blue on hover */
+    color: #ff5c5c; /* Blue on hover */
 }
 
 .social-icons a {
@@ -183,7 +183,7 @@ footer {
 }
 
 .social-icons a:hover {
-    color: #4A90E2; /* Blue hover for icons */
+    color: #ff5c5c; /* Blue hover for icons */
 }
 
 .footer-bottom {

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
 .group-list {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -22,7 +24,7 @@
   
   .group-card h3 {
     font-size: 1.5rem; 
-    color: #333; 
+    color: #ff6363; 
     margin-bottom: 10px;
   }
   
@@ -33,11 +35,11 @@
   }
   
   .group-card button {
-    background-color: #4caf50;
+    background-color: #ff6363;
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px; 
+    border-radius: 15px; 
     cursor: pointer;
     font-size: 1rem; 
     transition: background-color 0.3s ease;
@@ -45,7 +47,7 @@
   }
   
   .group-card button:hover {
-    background-color: #45a049;
+    background-color: #09b7abd6;
   }
   
  /* Dashboard.css */
@@ -53,14 +55,36 @@
 .dashboard {
   position: relative;
   padding: 20px;
+  background-color: #fff3e6;
 }
 
+.dashboard-header {
+  color: 09b7abd6;
+  display: flex;
+}
+
+.logo {
+  font-family: 'Allura',cursive;
+  font-size: 40px;
+  margin: 1vw;
+  text-align: center;
+  color: #ff6363;
+}
+
+.header {
+  font-size: 35px;
+  margin: 10px;
+  text-align: center;
+  min-width: 72vw;
+  padding: 10px;
+  color: #09b7abd6;
+}
 .add-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background: linear-gradient(45deg, #ff6363, #09b7abd6);
   color: #fff;
   border: none;
   border-radius: 5px;

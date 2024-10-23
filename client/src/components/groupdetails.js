@@ -21,7 +21,7 @@ function GroupDetails({ getEmailFromToken, group_id }) {
         fetchDetails();
     }, [group_id]);
     return (
-        <div>
+        <div className='group-details-container'>
             <div className='group-header'>
             <div className='group-name'>{group.name}</div>
             <div className='group-desc'>{group.description}</div>

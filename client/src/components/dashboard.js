@@ -107,7 +107,10 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <h2>Your Study Groups</h2>
+      <div className='dashboard-header'>
+        <div className='logo'>Educonnect</div>
+        <div className='header'>Your Study Groups</div>
+        </div>
       <div className="group-list">
         {groups.map(group => (
           <div key={group.id} className="group-card">

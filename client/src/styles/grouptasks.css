@@ -3,7 +3,7 @@
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
-    background-color: #f8f9fa;
+    background-color: #fff3e6;
 }
 
 .add-task input,
@@ -19,7 +19,7 @@
 .add-task button {
     padding: 10px 15px;
     border: none;
-    background-color: #007bff;
+    background-color: #ff6363;
     color: white;
     border-radius: 4px;
     cursor: pointer;
