@@ -28,7 +28,7 @@ EduConnect is a web application designed to enhance group study and collaboratio
 5. **Install Server Dependencies**:
   `npm install`
 6. **Start the Server**:
-  `npm start`
+  `nodemon index`
 7. **Start the Client**: In a new terminal, navigate to the client folder and run:
   `npm start`
 
