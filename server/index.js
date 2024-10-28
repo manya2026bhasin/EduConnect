@@ -237,7 +237,6 @@ app.delete('/api/tasks/:id', async (req, res) => {
 app.get('/api/groupchats', async (req, res) => {
     try {
         const { group_id } = req.query; // Extract category from query parameters
-        console.log('group id is :', group_id);
         const client = await pool.connect();
         const query = 'SELECT * FROM chats WHERE group_id = $1';
         const values = [group_id];
@@ -254,7 +253,6 @@ app.get('/api/groupchats', async (req, res) => {
 app.get('/api/authortasks', async (req, res) => {
     try {
         const { author } = req.query; // Extract category from query parameters
-        console.log('author is :', author);
         const client = await pool.connect();
         const query = 'SELECT * FROM tasks WHERE author = $1';
         const values = [author];
@@ -267,6 +265,44 @@ app.get('/api/authortasks', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
+
+app.get('/api/groupTasks', async (req, res) => {
+    const { group_id } = req.query;
+    if (!group_id) {
+        return res.status(400).json({ error: 'Group ID is required' });
+    }
+    try {
+        const client = await pool.connect();
+        const query = 'SELECT * FROM discussions WHERE group_id = $1';
+        const values = [group_id];
+        const result = await client.query(query, values);
+        client.release();
+        res.status(200).json(result.rows); // Send the tasks as JSON
+    } catch (error) {
+        console.error('Error fetching group tasks:', error);
+        res.status(500).json({ error: 'Failed to fetch group tasks' });
+    }
+});
+
+app.post('/api/groupTasks', async (req, res) => {
+    const { title, contents, group_id, created_at, author} = req.body;
+    if (!title || !contents || !group_id || !created_at || !author) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+    try {
+        const client = await pool.connect();
+        const result = await client.query(
+            'INSERT INTO discussions (title, contents, group_id, created_at, author) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [title, contents, group_id, created_at, author]
+        );
+        client.release();
+        res.status(201).json(result.rows[0]);
+    } catch (error) {
+        console.error('Error adding new task:', error);
+        res.status(500).json({ error: 'Failed to add new task' });
+    }
+});
+
 
 app.get('/api/groupdetails', async (req, res) => {
     const groupId = req.query.group_id;
