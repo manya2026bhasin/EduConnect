@@ -72,6 +72,7 @@ function GroupTasks({ getEmailFromToken, group_id }) {
                 <div key={task.id} className="task">
                     <h3>{task.title}</h3>
                     <p>{task.contents}</p>
+                    <span>▼</span>
                 </div>
             ))}
         </div>
